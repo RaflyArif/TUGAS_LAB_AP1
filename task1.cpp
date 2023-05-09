@@ -1,13 +1,23 @@
+
 #include <iostream>
-#include <cmath>
+#include <vector>
+#include <algorithm>
+
 using namespace std;
+
+void removeDuplicates(vector<int>& nums) {
+    sort(nums.begin(), nums.end()); // Mengurutkan vektor
+    auto last = unique(nums.begin(), nums.end()); // Menghapus duplikat
+    nums.erase(last, nums.end()); // Menghapus nilai setelah duplikat
+}
+
 int main() {
-    double nb_input;
-    cin>>nb_input;
-    nb_input += 8;
-    nb_input = nb_input / 3.0;
-    nb_input = fmod(nb_input,5);
-    nb_input = nb_input * 5;
-    cout<<endl<<"final result : "<<nb_input<<endl;
+    vector<int> nums = {1, 2, 3, 4, 2, 3, 5, 6, 4, 7};
+    removeDuplicates(nums);
+    cout << "Hasil setelah menghapus duplikat: ";
+    for (int num : nums) {
+        cout << num << " ";
+    }
+    cout << endl;
     return 0;
 }
